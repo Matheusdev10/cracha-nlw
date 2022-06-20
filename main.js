@@ -1,5 +1,5 @@
 const linksSocialMedia = {
-  github: 'Matheusdev10',
+  github: 'jessica',
   youtube: 'mundosemfim',
   facebook: '100000496084612',
   instagram: 'ma_campos10',
@@ -16,16 +16,28 @@ function changeSocialMediaLinks() {
 
 changeSocialMediaLinks();
 
-function getGitHubProfileInfos() {
+// function getGitHubProfileInfos() {
+//   const url = `https://api.github.com/users/${linksSocialMedia.github}`;
+//   fetch(url)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       userName.textContent = data.name;
+//       userBio.textContent = data.bio;
+//       userLink.href = data.html_url;
+//       userImage.src = data.avatar_url;
+//       userLogin.textContent = data.login;
+//     });
+// }
+// getGitHubProfileInfos();
+
+async function getGitHubProfileInfos() {
   const url = `https://api.github.com/users/${linksSocialMedia.github}`;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      userName.textContent = data.name;
-      userBio.textContent = data.bio;
-      userLink.href = data.html_url;
-      userImage.src = data.avatar_url;
-      userLogin.textContent = data.login;
-    });
+  const response = await fetch(url);
+  const data = await response.json();
+  userName.textContent = data.name;
+  userBio.textContent = data.bio;
+  userLink.href = data.html_url;
+  userImage.src = data.avatar_url;
+  userLogin.textContent = data.login;
 }
 getGitHubProfileInfos();
